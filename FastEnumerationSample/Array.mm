@@ -89,7 +89,7 @@
     
     // 将本次调用得到的 countOfItemsAlreadyEnumerated 保存到 state->state 中
     // 因为 NSFastEnumeration 协议本身并没有用到 state->state
-    // 所以，我们可以将这个值一直保留到下一次调用时使用
+    // 所以，我们可以将这个值一直保留到下一次调用
     state->state = countOfItemsAlreadyEnumerated;
     
     // 返回 C 数组的长度
