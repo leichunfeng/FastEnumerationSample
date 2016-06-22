@@ -7,11 +7,17 @@
 //
 
 #import "ViewController.h"
+#import "Array.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Array *array = [[Array alloc] initWithCapacity:50];
+    for (NSNumber *number in array) {
+        NSLog(@"%@", number);
+    }
 }
 
 @end
