@@ -29,7 +29,7 @@
     // 这个方法的返回值，即我们需要返回的 C 数组的长度
     NSUInteger count = 0;
     
-    // 我们前面已经知道了，这个方法是会被多次调用的
+    // 我们前面已经提到了，这个方法是会被多次调用的
     // 因此，我们需要使用 state->state 来保存当前遍历到了 _list 的什么位置
     unsigned long countOfItemsAlreadyEnumerated = state->state;
     
@@ -53,11 +53,11 @@
     // 判断我们是否已经遍历完 _list
     if (countOfItemsAlreadyEnumerated < _list.size()) {
         // 我们知道 state->itemsPtr 就是这个方法返回的 C 数组指针，它不能为 NULL
-        // 这里，我们将 state->itemsPtr 指向调用者提供的 C 数组 stackbuf
+        // 在这里，我们将 state->itemsPtr 指向调用者提供的 C 数组 stackbuf
         state->itemsPtr = stackbuf;
         
-        // 将 _list 中的值填充到 stackbuf 中，直到以下两个条件中的任意一个满足时为止
-        // 1. 已经遍历完 _list 中的元素
+        // 将 _list 中的元素填充到 stackbuf 中，直到以下两个条件中的任意一个满足时为止
+        // 1. 已经遍历完 _list 中的所有元素
         // 2. 已经填充满 stackbuf
         while (countOfItemsAlreadyEnumerated < _list.size() && count < len) {
             // 取出 _list 中的元素填充到 stackbuf 中
@@ -89,7 +89,7 @@
     
     // 将本次调用得到的 countOfItemsAlreadyEnumerated 保存到 state->state 中
     // 因为 NSFastEnumeration 协议本身并没有用到 state->state
-    // 所以，我们可以将这个值一直保留到下一次调用
+    // 所以，我们可以将这个值保留到下一次调用
     state->state = countOfItemsAlreadyEnumerated;
     
     // 返回 C 数组的长度
